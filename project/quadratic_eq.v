@@ -1,3 +1,4 @@
+`include "bc.v"
 `include "bo.v"
 
 module quadratic_eq(
@@ -12,5 +13,14 @@ module quadratic_eq(
   output pronto,
   output[15:0] resultado
 );
-  // bo bo_0(x, a, b, c, );
+  wire lx;
+  wire lh;
+  wire ll;
+  wire[1:0] m0;
+  wire[1:0] m1;
+  wire[1:0] m2;
+  wire h;
+
+  bc bc_0(clock, reset, inicio, lx, lh, ll, m0, m1, m2, h, pronto);
+  bo bo_0(x, a, b, c, m0, m1, m2, lx, ll, lh, h, clock, reset, pronto, resultado);
 endmodule

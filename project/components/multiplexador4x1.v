@@ -10,7 +10,7 @@ module multiplexador4x1(
   reg[15:0] saida;
   assign resultado = saida;
 
-  always @(M) begin
+  always @(M, entrada0, entrada1, entrada2, entrada3) begin
     if (M == 2'b00) saida <= entrada0;
     else if (M == 2'b01) saida <= entrada1;
     else if (M == 2'b10) saida <= entrada2;

@@ -24,9 +24,8 @@ module bo(
   input reset,
   input pronto,
 
-  output resultado
+  output[15:0] resultado
 );
-  wire[15:0] 16b_zero = 16'b0000000000000000
   wire[15:0] valor_x_16b;
   wire[15:0] valor_m0;
   wire[15:0] valor_m1;
@@ -35,14 +34,13 @@ module bo(
   
   wire[15:0] reg_l;
   wire[15:0] reg_h;
-  wire[15:0] saida;
 
   registrador_x registrador_x_0(valor_x, load_x, clock, reset, valor_x_16b);
-  multiplexador4x1 multiplexador4x1_0(16b_zero, valor_a, valor_b, valor_c, M0, valor_m0);
-  multiplexador4x1 multiplexador4x1_1(valor_x_16b, valor_m0, saida, reg_h, M1, valor_m1);
-  multiplexador4x1 multiplexador4x1_2(valor_m0, valor_x_16b, saida, reg_h, M2, valor_m2);
+  multiplexador4x1 multiplexador4x1_0(16'b0000000000000000, valor_a, valor_b, valor_c, M0, valor_m0);
+  multiplexador4x1 multiplexador4x1_1(valor_x_16b, valor_m0, reg_l, reg_h, M1, valor_m1);
+  multiplexador4x1 multiplexador4x1_2(valor_m0, valor_x_16b, reg_l, reg_h, M2, valor_m2);
   ula ula_0(valor_m1, valor_m2, h, saida_ula);
   registrador_16b registrador_16b_L(saida_ula, load_l, clock, reset, reg_l);
   registrador_16b registrador_16b_H(saida_ula, load_h, clock, reset, reg_h);
-  multiplexador2x1 multiplexador2x1_0(16b_zero, reg_l, pronto, saida);
+  multiplexador2x1 multiplexador2x1_0(16'b0000000000000000, reg_l, pronto, resultado);
 endmodule

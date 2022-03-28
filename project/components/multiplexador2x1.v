@@ -14,21 +14,21 @@ module multiplexador2x1(
   end
 endmodule
 
-module testbench;
-  reg[15:0] entrada0 = 16'b0000000000000000;
-  reg[15:0] entrada1 = 16'b0000000000000001;
-  reg M = 0;
+// module testbench;
+//   reg[15:0] entrada0 = 16'b0000000000000000;
+//   reg[15:0] entrada1 = 16'b0000000000000001;
+//   reg M = 0;
   
-  wire[15:0] resultado;
+//   wire[15:0] resultado;
 
-  multiplexador2x1 multiplexador2x10(entrada0, entrada1, M, resultado);
+//   multiplexador2x1 multiplexador2x10(entrada0, entrada1, M, resultado);
 
-  initial begin
-    $dumpvars;
-    #2;
-    M = 1;
-    #2;
-    M = 0;
-    $finish;
-  end
-endmodule
+//   initial begin
+//     $dumpvars;
+//     #2;
+//     M = 1;
+//     #2;
+//     M = 0;
+//     $finish;
+//   end
+// endmodule
